@@ -25,8 +25,13 @@ $application->addCommands([
   new ServerLogCommand(),
 ]);
 
-// Override default location for pid file.
-if (!preg_grep ('/^--pidfile=.+$/', $_SERVER['argv'])) {
+// Override default location of pid file.
+$pid_commands = [
+  'server:start',
+  'server:stop',
+  'server:status',
+];
+if (in_array($_SERVER['argv'][1], $pid_commands) && !preg_grep ('/^--pidfile=.+$/', $_SERVER['argv'])) {
   $_SERVER['argv'][] = '--pidfile='.sys_get_temp_dir().'/.web-server-pid';
 }
 
