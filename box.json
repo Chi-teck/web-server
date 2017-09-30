@@ -1,0 +1,24 @@
+{
+    "chmod": "0755",
+    "files": [
+        "vendor/autoload.php",
+        "router.php",
+        "WebServerConfig.php"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "in": [
+                "vendor"
+            ],
+        "exclude": [
+            "Tests",
+            "test"
+        ]
+      }
+    ],
+    "git-version": "git-version",
+    "main": "bin/web-server",
+    "output": "web-server.phar",
+    "stub": true
+}

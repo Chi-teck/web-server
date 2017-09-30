@@ -13,7 +13,7 @@ $autoloader = file_exists(__DIR__ . '/../vendor/autoload.php')
   ? require __DIR__ . '/../vendor/autoload.php'
   : require __DIR__ . '/../../../autoload.php';
 
-$application = new Application('Web server');
+$application = new Application('Web server', '@git-version@');
 
 $cwd = getcwd();
 
