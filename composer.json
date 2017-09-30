@@ -1,0 +1,17 @@
+{
+    "name": "chi-teck/web-server",
+    "description": "Web server",
+    "require": {
+        "symfony/web-server-bundle": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "WebServer\\": "src"
+        },
+       "classmap": ["WebServerConfig.php"]
+    },
+    "bin": [
+        "bin/web-server"
+    ],
+    "license": "GPL2"
+}

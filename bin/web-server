@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Application;
+
+use Symfony\Bundle\WebServerBundle\Command\ServerRunCommand;
+use Symfony\Bundle\WebServerBundle\Command\ServerStartCommand;
+use Symfony\Bundle\WebServerBundle\Command\ServerStopCommand;
+use Symfony\Bundle\WebServerBundle\Command\ServerStatusCommand;
+use Symfony\Bundle\WebServerBundle\Command\ServerLogCommand;
+
+$autoloader = file_exists(__DIR__ . '/../vendor/autoload.php')
+  ? require __DIR__ . '/../vendor/autoload.php'
+  : require __DIR__ . '/../../../autoload.php';
+
+$application = new Application('Web server');
+
+$cwd = getcwd();
+
+$application->addCommands([
+  new ServerRunCommand($cwd, 'default'),
+  new ServerStartCommand($cwd, 'default'),
+  new ServerStopCommand(),
+  new ServerStatusCommand(),
+  new ServerLogCommand(),
+]);
+
+// Override default location for pid file.
+if (!preg_grep ('/^--pidfile=.+$/', $_SERVER['argv'])) {
+  $_SERVER['argv'][] = '--pidfile='.sys_get_temp_dir().'/.web-server-pid';
+}
+
+$application->run();
