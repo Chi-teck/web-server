@@ -3,11 +3,11 @@
 
 use Symfony\Component\Console\Application;
 
+use Symfony\Bundle\WebServerBundle\Command\ServerLogCommand;
 use Symfony\Bundle\WebServerBundle\Command\ServerRunCommand;
 use Symfony\Bundle\WebServerBundle\Command\ServerStartCommand;
-use Symfony\Bundle\WebServerBundle\Command\ServerStopCommand;
 use Symfony\Bundle\WebServerBundle\Command\ServerStatusCommand;
-use Symfony\Bundle\WebServerBundle\Command\ServerLogCommand;
+use Symfony\Bundle\WebServerBundle\Command\ServerStopCommand;
 
 $autoloader = file_exists(__DIR__ . '/../vendor/autoload.php')
   ? require __DIR__ . '/../vendor/autoload.php'
@@ -18,11 +18,11 @@ $application = new Application('Web server', '@git-version@');
 $cwd = getcwd();
 
 $application->addCommands([
-  new ServerRunCommand($cwd, 'default'),
-  new ServerStartCommand($cwd, 'default'),
-  new ServerStopCommand(),
-  new ServerStatusCommand(),
-  new ServerLogCommand(),
+  (new ServerRunCommand($cwd, 'default'))->setName('run'),
+  (new ServerStartCommand($cwd, 'default'))->setName('start'),
+  (new ServerStopCommand())->setName('stop'),
+  (new ServerStatusCommand())->setName('status'),
+  (new ServerLogCommand())->setName('log'),
 ]);
 
 // Override default location of pid file.
