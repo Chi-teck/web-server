@@ -11,7 +11,7 @@
        "classmap": ["WebServerConfig.php"]
     },
     "bin": [
-        "bin/web-server"
+        "bin/web.server"
     ],
     "license": "GPL2"
 }
