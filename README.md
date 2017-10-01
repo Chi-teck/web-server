@@ -31,5 +31,3 @@ stop    Stops the local web server that was started with the server:start comman
 ```
 ## Credits
 This packages is built on top of [Symfony web server bundle](https://github.com/symfony/web-server-bundle).
-## License
-GNU General Public License, version 2
