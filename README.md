@@ -30,4 +30,4 @@ status  Outputs the status of the local web server for the given address
 stop    Stops the local web server that was started with the server:start command
 ```
 ## Credits
-This packages is built on top of [Symfony web server bundle](https://github.com/symfony/web-server-bundle).
+This package is built on top of [Symfony web server bundle](https://github.com/symfony/web-server-bundle).
