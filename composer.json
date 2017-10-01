@@ -13,5 +13,5 @@
     "bin": [
         "bin/web.server"
     ],
-    "license": "GPL2"
+    "license": "MIT"
 }
